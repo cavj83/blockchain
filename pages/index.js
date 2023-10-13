@@ -138,8 +138,8 @@ const Home = () => {
             );
 
             //Llaves
-            //CTA empresa
-            const fromPubkey = new PublicKey("7YEpVLoh4KHmNPygRAhW4HeG1XjxdyJsQPbM9ui7bjMS");//(publicKey);
+            //en productivo es la CTA de la empresa
+            const fromPubkey = new PublicKey(publicKey);
             //CTA PAC de Timbrado de Nomina
             const toPubkey = new PublicKey("J39RGnXNF3pgkDj1MWQevJ6uQu483xp3w7BBpnKWwaSX");//(receiver);
 
@@ -273,7 +273,7 @@ const Home = () => {
             <div className="flex flex-col  w-auto h-auto  bg-black">
                 <div className="flex flex-col py-24 place-items-center justify-center">
                     <h1 className="text-5xl font-bold pb-10 text-emerald-200">
-                        kiosco
+                        KIOSKO
                     </h1>
 
                     {publicKey ? (
