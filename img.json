@@ -1,0 +1,15 @@
+{
+    "img":[{
+        "nombre":"semanal",
+        "url":"https://res.cloudinary.com/dceddepoe/image/upload/v1697173081/nominas/nomina_c0lghn.jpg"
+    },{
+        "nombre":"quincena",
+        "url":"https://res.cloudinary.com/dceddepoe/image/upload/v1697173081/nominas/nomina_c0lghn.jpg"
+    },{
+        "nombre":"quincena",
+        "url":"https://res.cloudinary.com/dceddepoe/image/upload/v1697173081/nominas/nomina_c0lghn.jpg"
+    },{
+        "nombre":"quincena",
+        "url":"https://res.cloudinary.com/dceddepoe/image/upload/v1697173081/nominas/nomina_c0lghn.jpg"
+    }]
+}

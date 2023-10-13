@@ -13,7 +13,7 @@ import {
 import { useStorageUpload } from "@thirdweb-dev/react";
 
 import axios from "axios";
-import nom from "img.json";
+import nom from "../img.json";
 
 const img = nom.img;
 const SOLANA_NETWORK = "devnet";
@@ -29,7 +29,7 @@ const Home = () => {
     const [uploadUrl, setUploadUrl] = useState(null);
     const [url, setUrl] = useState(null);
     const [statusText, setStatusText] = useState("");
-    const [nomid,setnomid]=useState(null);
+    //const [nomid,setnomid]=useState(null);
 
     useEffect(() => {
         let key = window.localStorage.getItem("publicKey"); //obtiene la publicKey del localStorage
