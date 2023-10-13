@@ -264,7 +264,7 @@ const Home = () => {
             <div className="flex flex-col  w-auto h-auto  bg-black">
                 <div className="flex flex-col py-24 place-items-center justify-center">
                     <h1 className="text-5xl font-bold pb-10 text-emerald-300">
-                        Superteach Starter
+                        kiosco
                     </h1>
 
                     {publicKey ? (
@@ -387,7 +387,7 @@ const Home = () => {
                                     signIn();
                                 }}
                             >
-                                Conecta tu wallet 👻
+                                Ingresa a tu Nomina 💵
                             </button>
                         </div>
                     )}
