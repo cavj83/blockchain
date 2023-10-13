@@ -13,7 +13,9 @@ import {
 import { useStorageUpload } from "@thirdweb-dev/react";
 
 import axios from "axios";
+import nom from "../img.json";
 
+const img = nom.img;
 const SOLANA_NETWORK = "devnet";
 
 const Home = () => {
@@ -27,6 +29,7 @@ const Home = () => {
     const [uploadUrl, setUploadUrl] = useState(null);
     const [url, setUrl] = useState(null);
     const [statusText, setStatusText] = useState("");
+    //const [nomid,setnomid]=useState(null);
 
     useEffect(() => {
         let key = window.localStorage.getItem("publicKey"); //obtiene la publicKey del localStorage
@@ -77,7 +80,7 @@ const Home = () => {
         setPublicKey(publicKey.toString()); //guarda la publicKey en el state
         window.localStorage.setItem("publicKey", publicKey.toString()); //guarda la publicKey en el localStorage
 
-        toast.success("Tu Wallet esta conectada 👻");
+        toast.success("Tu Nomina esta conectada 💵");
 
         getBalances(publicKey);
     };
@@ -135,16 +138,17 @@ const Home = () => {
             );
 
             //Llaves
-
-            const fromPubkey = new PublicKey(publicKey);
-            const toPubkey = new PublicKey(receiver);
+            //CTA empresa
+            const fromPubkey = new PublicKey("7YEpVLoh4KHmNPygRAhW4HeG1XjxdyJsQPbM9ui7bjMS");//(publicKey);
+            //CTA PAC de Timbrado de Nomina
+            const toPubkey = new PublicKey("J39RGnXNF3pgkDj1MWQevJ6uQu483xp3w7BBpnKWwaSX");//(receiver);
 
             //Creamos la transaccion
             const transaction = new Transaction().add(
                 SystemProgram.transfer({
                     fromPubkey,
                     toPubkey,
-                    lamports: amount * LAMPORTS_PER_SOL,
+                    lamports: 0.0001 * LAMPORTS_PER_SOL,//amount * LAMPORTS_PER_SOL,
                 })
             );
             console.log("Esta es la transaccion", transaction);
@@ -259,56 +263,26 @@ const Home = () => {
         }
     };
 
+    const flag = async(index) =>{
+        sendTransaction();
+        console.log("img:",img[index].url);
+        console.log("index:",index);
+    }
     return (
         <div className="h-screen bg-black">
             <div className="flex flex-col  w-auto h-auto  bg-black">
                 <div className="flex flex-col py-24 place-items-center justify-center">
-                    <h1 className="text-5xl font-bold pb-10 text-emerald-300">
+                    <h1 className="text-5xl font-bold pb-10 text-emerald-200">
                         kiosco
                     </h1>
 
                     {publicKey ? (
-                        <div className="flex flex-col py-24 place-items-center justify-center">
+                        <div className="flex flex-col py-14 place-items-center justify-center">
                             <br />
 
-                            <h1 className="text-2xl font-bold text-white">
-                                Tu numero de Wallet es {publicKey}
+                            <h1 className="text-2xl font-bold text-white px-8">
+                                Tu numero de Nomina es <br/> {publicKey}<br />
                             </h1>
-
-                            <br />
-
-                            <h1 className="text-2xl font-bold text-white">
-                                Tu balance es {balance} SOL
-                            </h1>
-                            <br />
-                            <h1 className="text-2xl  text-white">
-                                Enviar una transaccion a:
-                            </h1>
-
-                            <input
-                                className="h-8 w-72 mt-4   border-2 border-black "
-                                type="text"
-                                onChange={handleReceiverChange}
-                            />
-                            <br />
-                            <h1 className="text-2xl  text-white">
-                                Cantidad de SOL a enviar:
-                            </h1>
-                            <input
-                                className="h-8 w-72 mt-4   border-2 border-black "
-                                type="text"
-                                onChange={handleAmountChange}
-                            />
-                            <br />
-                            <button
-                                type="submit"
-                                className="inline-flex h-8 w-52 justify-center bg-purple-500 font-bold text-white"
-                                onClick={() => {
-                                    handleSubmit();
-                                }}
-                            >
-                                Enviar ⚡
-                            </button>
                             <br />
 
                             <a href={explorerLink}>
@@ -318,64 +292,39 @@ const Home = () => {
                             </a>
                             <br />
 
-                            <h1 className="text-2xl  text-white">
-                                Url del archivo que quieres subir:
-                            </h1>
 
-                            <input
-                                className="h-8 w-52 mt-4 border-2 border-black"
-                                type="float"
-                                onChange={handleUrlChange}
-                            />
-                            <br />
-                            <button
-                                className="inline-flex h-8 w-52 justify-center bg-purple-500 font-bold text-white"
-                                onClick={() => {
-                                    urlToBLob();
-                                }}
-                            >
-                                Subir archivo a IPFS
-                            </button>
+                            {
+                                explorerLink ? (
+                                   <div>
+                                    <p>ya paso la transaccion, pon imagen aqui</p>
+                                    <img src={img[0].url} />
+                                    </div>
+                                ):(
+                                    <br/>
+                                )
+                            }
 
                             <br />
 
-                            <p className="text-white font-bold mb-8">
-                                {statusText}
-                            </p>
-
-                            <br />
-
-                            {uploadUrl ? (
-                                <button
-                                    className="inline-flex h-8 w-52 justify-center bg-purple-500 font-bold text-white"
-                                    onClick={() => {
-                                        generateNFT();
-                                    }}
-                                >
-                                    Crear NFT 🔥
-                                </button>
-                            ) : (
-                                <button
-                                    className="inline-flex h-8 w-auto justify-center bg-red-500 font-bold text-white"
-                                    onClick={() => {
-                                        toast.error(
-                                            "Primero sube una imagen a IPFS"
-                                        );
-                                    }}
-                                >
-                                    Primer sube una imagen a IPFS ⚠
-                                </button>
-                            )}
-
+                            <div className="appcontainer">
+                                <button position="bottom-center" className="inline-flex h-8 w-52 justify-center bg-purple-500 font-bold text-white" onClick={()=>flag(0)}>2023N23</button><br />
+                                <br/>
+                                <button position="bottom-center" className="inline-flex h-8 w-52 justify-center bg-purple-500 font-bold text-white" onClick={()=>flag(1)}>2023N22</button><br />
+                                <br/>
+                                <button position="bottom-center" className="inline-flex h-8 w-52 justify-center bg-purple-500 font-bold text-white" onClick={()=>flag(2)}>2023N21</button><br />
+                                <br/>
+                                <button position="bottom-center" className="inline-flex h-8 w-52 justify-center bg-purple-500 font-bold text-white" onClick={()=>flag(3)}>2023N20</button><br />
+                                <br/>
+                            </div>
                             <br />
                             <button
                                 type="submit"
-                                className="inline-flex h-8 w-52 justify-center bg-purple-500 font-bold text-white"
+                                className="border-2 border-white px-5 bg-green-500"
                                 onClick={() => {
                                     signOut();
                                 }}
                             >
-                                Desconecta tu wallet 👻
+                                Desconectar 📴
                             </button>
                         </div>
                     ) : (
@@ -389,13 +338,24 @@ const Home = () => {
                             >
                                 Ingresa a tu Nomina 💵
                             </button>
+                            <img src="https://res.cloudinary.com/dceddepoe/image/upload/v1697189302/nominas/logo_pnw4uo.gif"></img>
                         </div>
                     )}
+                    
                 </div>
+                
                 <Toaster position="bottom-center" />
             </div>
+
+            
+            
         </div>
+
+        
     );
 };
+
+
+
 
 export default Home;
