@@ -1,15 +1,15 @@
 {
     "img":[{
-        "nombre":"semanal",
-        "url":"https://res.cloudinary.com/dceddepoe/image/upload/v1697173081/nominas/nomina_c0lghn.jpg"
+        "nombre":"2023N23",
+        "url":"https://res.cloudinary.com/dceddepoe/image/upload/v1697210122/nominas/2023N23_zv6slc.png"
     },{
-        "nombre":"quincena",
-        "url":"https://res.cloudinary.com/dceddepoe/image/upload/v1697173081/nominas/nomina_c0lghn.jpg"
+        "nombre":"2023N22",
+        "url":"https://res.cloudinary.com/dceddepoe/image/upload/v1697210191/nominas/2023N22_z3csjo.png"
     },{
-        "nombre":"quincena",
-        "url":"https://res.cloudinary.com/dceddepoe/image/upload/v1697173081/nominas/nomina_c0lghn.jpg"
+        "nombre":"2023N21",
+        "url":"https://res.cloudinary.com/dceddepoe/image/upload/v1697210229/nominas/2023N21_dbcb5l.png"
     },{
-        "nombre":"quincena",
-        "url":"https://res.cloudinary.com/dceddepoe/image/upload/v1697173081/nominas/nomina_c0lghn.jpg"
+        "nombre":"2023N20",
+        "url":"https://res.cloudinary.com/dceddepoe/image/upload/v1697210272/nominas/2023N20_bnuqhg.png"
     }]
 }

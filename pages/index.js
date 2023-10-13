@@ -29,7 +29,7 @@ const Home = () => {
     const [uploadUrl, setUploadUrl] = useState(null);
     const [url, setUrl] = useState(null);
     const [statusText, setStatusText] = useState("");
-    //const [nomid,setnomid]=useState(null);
+    const [nomid,setnomid]=useState(0);
 
     useEffect(() => {
         let key = window.localStorage.getItem("publicKey"); //obtiene la publicKey del localStorage
@@ -265,8 +265,9 @@ const Home = () => {
 
     const flag = async(index) =>{
         sendTransaction();
-        console.log("img:",img[index].url);
-        console.log("index:",index);
+        setnomid(index);
+        //console.log("img:",img[index].url);
+        //console.log("index:",index);
     }
     return (
         <div className="h-screen bg-black">
@@ -297,7 +298,7 @@ const Home = () => {
                                 explorerLink ? (
                                    <div>
                                     <p>ya paso la transaccion, pon imagen aqui</p>
-                                    <img src={img[0].url} />
+                                    <img src={img[nomid].url} />
                                     </div>
                                 ):(
                                     <br/>
